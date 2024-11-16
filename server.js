@@ -3,11 +3,11 @@ const app = express();
 const path = require('path');
 
 // Servir arquivos estáticos da pasta 'public'
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 // Rota principal
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'Public', 'index.html'));
 });
 
 // Rodar o servidor na porta dinâmica ou na 3000 (se localmente)
