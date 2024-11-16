@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cardFinal = document.createElement('div');
   cardFinal.classList.add('card-final');
   cardFinal.innerHTML = `
-    <div class="mensagem-final">Às vezes, o silêncio diz mais do que as palavras.</div>
-    <div class="destaque">Os gestos têm o poder de falar o que não se pode expressar.</div>
-
+    <div class="destaque">Às vezes, o silêncio diz mais do que as palavras,os gestos têm o poder de falar o que não se pode expressar.</div>
   `;
   document.body.appendChild(cardFinal);
   cardFinal.style.display = 'none'; // Inicialmente oculto
@@ -52,23 +50,21 @@ document.addEventListener('DOMContentLoaded', () => {
         criarCoracao(x, y);
         
         mensagensReveladas++;
-        
+
         // Alterna entre os lados para exibir os cards
         const novoLado = ladoDaMensagem === 'left' ? 'right' : 'left';
         ladoDaMensagem = novoLado;
 
-        // Aplica a classe para posicionar o card
+        // Criação do card sem incluir o conteúdo textual no card (removendo a legenda)
         const cardNovo = document.createElement('div');
         cardNovo.classList.add('card', novoLado);
-        cardNovo.innerHTML = `
-          <div class="mensagem-info">Mensagem ${mensagensReveladas} de ${totalMensagens}</div>
-          <div>${mensagem.innerHTML}</div>
-        `;
-        document.body.appendChild(cardNovo);
         
+        // Adiciona apenas a animação do card e não o conteúdo da mensagem
         setTimeout(() => {
           cardNovo.classList.add('show');
         }, 100);
+
+        document.body.appendChild(cardNovo);
 
         // Quando todas as mensagens foram reveladas, mostramos o card final
         if (mensagensReveladas === totalMensagens) {
@@ -113,15 +109,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mostra o card final quando todas as mensagens foram encontradas
   function mostrarCardFinal() {
-    // Exibe o card final com animação suave
-    cardFinal.style.display = 'block';
-    gsap.fromTo(cardFinal, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 1 });
-
-    // Remove os outros cards de mensagens
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-      card.remove();
-    });
+    // Aguarda 2 segundos antes de exibir o card final
+    setTimeout(() => {
+      // Exibe o card final com animação suave
+      cardFinal.style.display = 'block';
+      gsap.fromTo(cardFinal, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 1 });
+      cardFinal.classList.add('show');
+      
+      // Remove os outros cards de mensagens
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.remove();
+      });
+    }, 2000);  // Aguarda 2 segundos antes de exibir o card final
   }
 
   // Posiciona as mensagens e começa o rastreamento do mouse/touch

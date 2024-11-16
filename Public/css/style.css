@@ -40,7 +40,7 @@ body, html {
 /* Cards para as mensagens secretas */
 .mensagem-secreta {
   position: absolute;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0); /* Começa invisível */
   visibility: hidden;
   opacity: 0;
@@ -48,7 +48,7 @@ body, html {
   transition: opacity 1s ease-out, visibility 0s 1s, transform 0.5s ease-out;
   max-width: 90%;
   word-wrap: break-word;
-  padding: 20px;
+  padding: 1.2rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
@@ -66,7 +66,7 @@ body, html {
 /* Corações brilhantes */
 .coracao {
   position: absolute;
-  font-size: 2em;
+  font-size: 2.5rem;
   color: #ff69b4;
   opacity: 0;
   animation: brilhar 2s ease-out infinite;
@@ -96,8 +96,8 @@ body, html {
   bottom: 10%;
   width: 90%;
   max-width: 400px;
-  padding: 15px;
-  font-size: 1.2em;
+  padding: 1rem;
+  font-size: 1.2rem;
   color: #fff;
   background: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
@@ -124,6 +124,70 @@ body, html {
   text-align: right;
 }
 
+/* Card Final - Estilo refinado */
+.card-final {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)); /* Gradiente suave */
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 1000;
+  color: #fff;
+  width: 60%;
+  max-width: 450px;
+  font-size: 1.2rem;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6); /* Sombra mais suave e profunda */
+  backdrop-filter: blur(12px); /* Desfoque mais forte no fundo */
+  transition: opacity 0.6s ease, transform 0.6s ease-out; /* Transição suave */
+}
+
+.card-final.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1); /* Efeito de zoom suave ao aparecer */
+}
+
+.card-final .mensagem-final {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: #ff69b4; /* Cor vibrante e suave */
+}
+
+.card-final .destaque {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 1rem;
+  opacity: 0.8; /* Opacidade um pouco mais baixa para destacar o texto */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para o texto */
+}
+
+/* Animação de fade-in do card */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Aplica a animação quando o card se torna visível */
+.card-final.show {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Responsividade */
 @media (max-width: 600px) {
   .card {
     bottom: 15%;
@@ -138,11 +202,11 @@ body, html {
   }
 
   .titulo {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
 
   .mensagem-secreta {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
 
   /* Cards alternando entre esquerda e direita */
@@ -153,20 +217,4 @@ body, html {
   .card.right {
     right: 5%;
   }
-}
-
-/* Card Final */
-.card-final {
-  display: none;
-  opacity: 0;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  z-index: 1000;
-  color: #fff;
 }
