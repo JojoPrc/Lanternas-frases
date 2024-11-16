@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const cardFinal = document.createElement('div');
   cardFinal.classList.add('card-final');
   cardFinal.innerHTML = `
-    <div class="mensagem-final">Às vezes, as palavras não são necessárias.</div>
-    <div class="destaque">Só o fato de estarmos quase juntos já diz tudo.</div>
+    <div class="mensagem-final">Às vezes, o silêncio diz mais do que as palavras.</div>
+    <div class="destaque">Os gestos têm o poder de falar o que não se pode expressar.</div>
+
   `;
   document.body.appendChild(cardFinal);
   cardFinal.style.display = 'none'; // Inicialmente oculto
