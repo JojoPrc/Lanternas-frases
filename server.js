@@ -10,7 +10,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Rodar o servidor na porta 3000
-app.listen(3000, () => {
-  console.log('Servidor rodando em http://localhost:3000');
+// Rodar o servidor na porta dinâmica ou na 3000 (se localmente)
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
 });
